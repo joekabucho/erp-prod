@@ -62,7 +62,7 @@ module.exports = "<nav class=\"navigation\">\r\n  <a href=\"#\" (click)=\"back()
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nb-card>\r\n  <nb-card-header>\r\n    <input nbInput size=\"small\" type=\"text\" class=\"form-control\" [(ngModel)]=\"searchTerm\" autocomplete=\"on\" placeholder=\"Search\">\r\n    <!-- <div class=\"mr-auto ml-3\">{{usersData.length}} Users</div>\r\n    <button nbButton hero size=\"small\" status=\"info\" (click)=\"addUser()\">Create user</button> -->\r\n  </nb-card-header>\r\n  <nb-card-body class=\"pt-0 pb-0\">\r\n    <div class=\"table-responsive\">\r\n    <table class=\"table table-striped table-hover\">\r\n      <thead>\r\n        <tr >\r\n          <th *ngFor=\"let head of headElements\" scope=\"col\">{{head}}</th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr class=\"table-info\" *ngFor=\"let user of usersData | filter: searchTerm | paginate : {itemsPerPage: 10, currentPage: page}; index as i\">\r\n          <th scope=\"row\">{{ i + 1 }}</th>\r\n          <td>{{user.user?.username}}</td>\r\n          <td>{{user.change_message}}</td>\r\n          <td>{{user.content_type?.name}}</td>\r\n          <td>{{user.action_time | date: 'medium'}}</td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n    </div>\r\n  </nb-card-body>\r\n  <nb-card-footer class=\"d-flex justify-content-center\">\r\n    <pagination-controls (pageChange)=\"page = $event\"></pagination-controls>\r\n  </nb-card-footer>\r\n</nb-card>\r\n"
+module.exports = "<nb-card>\r\n  <nb-card-header>\r\n    <input nbInput size=\"small\" type=\"text\" class=\"form-control\" [(ngModel)]=\"searchTerm\" autocomplete=\"on\" placeholder=\"Search\">\r\n  </nb-card-header>\r\n  <nb-card-body class=\"pt-0 pb-0\">\r\n    <div class=\"table-responsive\">\r\n    <table class=\"table table-striped table-hover\">\r\n      <thead>\r\n        <tr >\r\n          <th *ngFor=\"let head of headElements\" scope=\"col\">{{head}}</th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr class=\"table-info\" *ngFor=\"let user of usersData | filter: searchTerm | paginate : {itemsPerPage: 10, currentPage: page, totalItems: allItems}; index as i\">\r\n          <th scope=\"row\">{{ i + 1 }}</th>\r\n          <td>{{user.user?.username}}</td>\r\n          <td>{{user.change_message}}</td>\r\n          <td>{{user.content_type?.name}}</td>\r\n          <td>{{user.action_time | date: 'medium'}}</td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n    </div>\r\n  </nb-card-body>\r\n  <nb-card-footer class=\"d-flex justify-content-center\">\r\n    <pagination-controls (pageChange)=\"pageChanged($event)\"></pagination-controls>\r\n  </nb-card-footer>\r\n</nb-card>\r\n"
 
 /***/ }),
 
@@ -73,7 +73,7 @@ module.exports = "<nb-card>\r\n  <nb-card-header>\r\n    <input nbInput size=\"s
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nb-card>\r\n  <nb-card-header>\r\n    <input nbInput size=\"small\" type=\"text\" class=\"form-control\" [(ngModel)]=\"searchTerm\" autocomplete=\"on\" placeholder=\"Search\">\r\n    <!-- <div class=\"mr-auto ml-3\">{{usersData.length}} Users</div>\r\n    <button nbButton hero size=\"small\" status=\"info\" (click)=\"addUser()\">Create user</button> -->\r\n  </nb-card-header>\r\n  <nb-card-body class=\"pt-0 pb-0\">\r\n    <div class=\"table-responsive\">\r\n    <table class=\"table table-striped table-hover\">\r\n      <thead>\r\n        <tr >\r\n          <th *ngFor=\"let head of headElements\" scope=\"col\">{{head}}</th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr class=\"table-info\" *ngFor=\"let user of usersData | filter: searchTerm | paginate : {itemsPerPage: 10, currentPage: page}; index as i\">\r\n          <th scope=\"row\">{{ i + 1 }}</th>\r\n          <td>{{user.username}}</td>\r\n          <td>{{user.login | date: 'medium'}}</td>\r\n          <td>{{user.logout | date: 'medium'}}</td>\r\n          <td>{{user.ipaddress}}</td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n    </div>\r\n  </nb-card-body>\r\n  <nb-card-footer class=\"d-flex justify-content-center\">\r\n    <pagination-controls (pageChange)=\"page = $event\"></pagination-controls>\r\n  </nb-card-footer>\r\n</nb-card>\r\n"
+module.exports = "<nb-card>\r\n  <nb-card-header>\r\n    <input nbInput size=\"small\" type=\"text\" class=\"form-control\" [(ngModel)]=\"searchTerm\" autocomplete=\"on\" placeholder=\"Search\">\r\n  </nb-card-header>\r\n  <nb-card-body class=\"pt-0 pb-0\">\r\n    <div class=\"table-responsive\">\r\n    <table class=\"table table-striped table-hover\">\r\n      <thead>\r\n        <tr >\r\n          <th *ngFor=\"let head of headElements\" scope=\"col\">{{head}}</th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr class=\"table-info\" *ngFor=\"let user of usersData | filter: searchTerm | paginate : {itemsPerPage: 10, currentPage: page, totalItems: allItems}; index as i\">\r\n          <th scope=\"row\">{{ i + 1 }}</th>\r\n          <td>{{user.username}}</td>\r\n          <td>{{user.login | date: 'medium'}}</td>\r\n          <td>{{user.logout | date: 'medium'}}</td>\r\n          <td>{{user.ipaddress}}</td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n    </div>\r\n  </nb-card-body>\r\n  <nb-card-footer class=\"d-flex justify-content-center\">\r\n    <pagination-controls (pageChange)=\"pageChanged($event)\"></pagination-controls>\r\n  </nb-card-footer>\r\n</nb-card>\r\n"
 
 /***/ }),
 
@@ -1219,6 +1219,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _core_services_user_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../@core/services/user.service */ "./src/app/@core/services/user.service.ts");
 /* harmony import */ var jwt_decode__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! jwt-decode */ "./node_modules/jwt-decode/lib/index.js");
 /* harmony import */ var jwt_decode__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(jwt_decode__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+
+
 
 
 
@@ -1226,9 +1230,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let AuditTrailComponent = class AuditTrailComponent {
-    constructor(userService, toastr) {
+    constructor(userService, toastr, _http, route, router) {
         this.userService = userService;
         this.toastr = toastr;
+        this._http = _http;
+        this.route = route;
+        this.router = router;
         this.alive = true;
         this.userToken = localStorage.getItem('currentUserToken');
         this.headElements = [
@@ -1241,6 +1248,7 @@ let AuditTrailComponent = class AuditTrailComponent {
         this.usersData = [];
         this.page = 1;
         this.loggedInUser = jwt_decode__WEBPACK_IMPORTED_MODULE_5__(this.userToken);
+        this.route.queryParams.subscribe(params => this.page = params['page'] ? params['page'] : 1);
     }
     ngOnInit() {
         this.getAuditTrail();
@@ -1250,8 +1258,31 @@ let AuditTrailComponent = class AuditTrailComponent {
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["takeWhile"])(() => this.alive))
             .subscribe(data => {
             this.usersData = data.results;
-            // console.log(data);
+            this.allItems = data.count;
+            this.nextPage = data.next;
+            this.previousPage = data.previous;
         });
+    }
+    pageChanged(event) {
+        this.router.navigate(['/admin/audit-trail/'], { queryParams: { page: event } });
+        if (event > this.page) {
+            this._http.get(`${this.nextPage}`)
+                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["takeWhile"])(() => this.alive))
+                .subscribe(data => {
+                this.usersData = data.results;
+                this.nextPage = data.next;
+                this.previousPage = data.previous;
+            });
+        }
+        else {
+            this._http.get(`${this.previousPage}`)
+                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["takeWhile"])(() => this.alive))
+                .subscribe(data => {
+                this.usersData = data.results;
+                this.nextPage = data.next;
+                this.previousPage = data.previous;
+            });
+        }
     }
     showToast(message, status) {
         this.toastr.show(message, `Hi there!`, { status });
@@ -1259,7 +1290,10 @@ let AuditTrailComponent = class AuditTrailComponent {
 };
 AuditTrailComponent.ctorParameters = () => [
     { type: _core_services_user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"] },
-    { type: _nebular_theme__WEBPACK_IMPORTED_MODULE_3__["NbToastrService"] }
+    { type: _nebular_theme__WEBPACK_IMPORTED_MODULE_3__["NbToastrService"] },
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClient"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_7__["ActivatedRoute"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"] }
 ];
 AuditTrailComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1268,13 +1302,19 @@ AuditTrailComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         styles: [__webpack_require__(/*! ./user-trail.component.scss */ "./src/app/admin/user-trail/user-trail.component.scss")]
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_core_services_user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"],
-        _nebular_theme__WEBPACK_IMPORTED_MODULE_3__["NbToastrService"]])
+        _nebular_theme__WEBPACK_IMPORTED_MODULE_3__["NbToastrService"],
+        _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClient"],
+        _angular_router__WEBPACK_IMPORTED_MODULE_7__["ActivatedRoute"],
+        _angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]])
 ], AuditTrailComponent);
 
 let LoginTrailComponent = class LoginTrailComponent {
-    constructor(userService, toastr) {
+    constructor(userService, toastr, _http, route, router) {
         this.userService = userService;
         this.toastr = toastr;
+        this._http = _http;
+        this.route = route;
+        this.router = router;
         this.alive = true;
         this.userToken = localStorage.getItem('currentUserToken');
         this.headElements = [
@@ -1287,6 +1327,7 @@ let LoginTrailComponent = class LoginTrailComponent {
         this.usersData = [];
         this.page = 1;
         this.loggedInUser = jwt_decode__WEBPACK_IMPORTED_MODULE_5__(this.userToken);
+        this.route.queryParams.subscribe(params => this.page = params['page'] ? params['page'] : 1);
     }
     ngOnInit() {
         this.getLoginTrail();
@@ -1296,7 +1337,31 @@ let LoginTrailComponent = class LoginTrailComponent {
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["takeWhile"])(() => this.alive))
             .subscribe(data => {
             this.usersData = data.results;
+            this.allItems = data.count;
+            this.nextPage = data.next;
+            this.previousPage = data.previous;
         });
+    }
+    pageChanged(event) {
+        this.router.navigate(['/admin/login-trail'], { queryParams: { page: event } });
+        if (event > this.page) {
+            this._http.get(`${this.nextPage}`)
+                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["takeWhile"])(() => this.alive))
+                .subscribe(data => {
+                this.usersData = data.results;
+                this.nextPage = data.next;
+                this.previousPage = data.previous;
+            });
+        }
+        else {
+            this._http.get(`${this.previousPage}`)
+                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["takeWhile"])(() => this.alive))
+                .subscribe(data => {
+                this.usersData = data.results;
+                this.nextPage = data.next;
+                this.previousPage = data.previous;
+            });
+        }
     }
     showToast(message, status) {
         this.toastr.show(message, `Hi there!`, { status });
@@ -1304,7 +1369,10 @@ let LoginTrailComponent = class LoginTrailComponent {
 };
 LoginTrailComponent.ctorParameters = () => [
     { type: _core_services_user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"] },
-    { type: _nebular_theme__WEBPACK_IMPORTED_MODULE_3__["NbToastrService"] }
+    { type: _nebular_theme__WEBPACK_IMPORTED_MODULE_3__["NbToastrService"] },
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClient"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_7__["ActivatedRoute"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"] }
 ];
 LoginTrailComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1313,7 +1381,10 @@ LoginTrailComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         styles: [__webpack_require__(/*! ./user-trail.component.scss */ "./src/app/admin/user-trail/user-trail.component.scss")]
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_core_services_user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"],
-        _nebular_theme__WEBPACK_IMPORTED_MODULE_3__["NbToastrService"]])
+        _nebular_theme__WEBPACK_IMPORTED_MODULE_3__["NbToastrService"],
+        _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClient"],
+        _angular_router__WEBPACK_IMPORTED_MODULE_7__["ActivatedRoute"],
+        _angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]])
 ], LoginTrailComponent);
 
 

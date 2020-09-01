@@ -83,7 +83,7 @@ var OrganizationService = /** @class */ (function () {
         return this._http.get(this.apiUrl + "team/");
     };
     OrganizationService.prototype.fetchSelectTeams = function (id) {
-        return this._http.get(this.apiUrl + "team/?site__id=" + id);
+        return this._http.get(this.apiUrl + "team/?sites__id=" + id);
     };
     OrganizationService.prototype.fetchOneTeam = function (id) {
         return this._http.get(this.apiUrl + "team/" + id + "/");
@@ -98,6 +98,145 @@ var OrganizationService = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
     ], OrganizationService);
     return OrganizationService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/@core/services/task.service.ts":
+/*!************************************************!*\
+  !*** ./src/app/@core/services/task.service.ts ***!
+  \************************************************/
+/*! exports provided: TaskService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TaskService", function() { return TaskService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../environments/environment */ "./src/environments/environment.ts");
+
+
+
+
+
+
+var TaskService = /** @class */ (function () {
+    function TaskService(_http) {
+        this._http = _http;
+        this.apiUrl = _environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].apiURL;
+        this.refreshNeeded$ = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+    }
+    Object.defineProperty(TaskService.prototype, "refresh$", {
+        get: function () {
+            return this.refreshNeeded$;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    TaskService.prototype.createTask = function (formData) {
+        var _this = this;
+        return this._http.post(this.apiUrl + "tasks/", formData)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function () {
+            _this.refreshNeeded$.next();
+        }));
+    };
+    TaskService.prototype.fetchTask = function () {
+        return this._http.get(this.apiUrl + "tasks/?limit=1000000&offset=0");
+    };
+    TaskService.prototype.fetchSpecificTasks = function (site, team) {
+        return this._http.get(this.apiUrl + "tasks/?site__id=" + site + "&team__id=" + team);
+    };
+    TaskService.prototype.fetchOneTask = function (id) {
+        return this._http.get(this.apiUrl + "tasks/" + id + "/");
+    };
+    TaskService.prototype.editTask = function (id, formData) {
+        var _this = this;
+        return this._http.patch(this.apiUrl + "tasks/" + id + "/", formData)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function () {
+            _this.refreshNeeded$.next();
+        }));
+    };
+    TaskService.prototype.deleteTask = function (id) {
+        return this._http.delete(this.apiUrl + "tasks/" + id);
+    };
+    TaskService.prototype.createDefaultTask = function (formData) {
+        var _this = this;
+        return this._http.post(this.apiUrl + "default_tasks/", formData)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function () {
+            _this.refreshNeeded$.next();
+        }));
+    };
+    TaskService.prototype.fetchDefaultTask = function () {
+        return this._http.get(this.apiUrl + "default_tasks/");
+    };
+    TaskService.prototype.fetchOneDefaultTask = function (id) {
+        return this._http.get(this.apiUrl + "default_tasks/" + id + "/");
+    };
+    TaskService.prototype.editDefaultTask = function (id, formData) {
+        var _this = this;
+        return this._http.patch(this.apiUrl + "default_tasks/" + id + "/", formData)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function () {
+            _this.refreshNeeded$.next();
+        }));
+    };
+    TaskService.prototype.createKPI = function (formData) {
+        var _this = this;
+        return this._http.post(this.apiUrl + "kpis/", formData)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function () {
+            _this.refreshNeeded$.next();
+        }));
+    };
+    TaskService.prototype.fetchKPI = function () {
+        return this._http.get(this.apiUrl + "kpis/");
+    };
+    TaskService.prototype.fetchOneKPI = function (id) {
+        return this._http.get(this.apiUrl + "kpis/" + id + "/");
+    };
+    TaskService.prototype.fetchTag = function () {
+        return this._http.get(this.apiUrl + "tag/");
+    };
+    TaskService.prototype.fetchSubTask = function () {
+        return this._http.get(this.apiUrl + "subtasks/?limit=&offset=0");
+    };
+    TaskService.prototype.fetchOneSubTask = function (id) {
+        return this._http.get(this.apiUrl + "subtasks/" + id + "/");
+    };
+    TaskService.prototype.createSubTask = function (formData) {
+        var _this = this;
+        return this._http.post(this.apiUrl + "subtasks/", formData)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function () {
+            _this.refreshNeeded$.next();
+        }));
+    };
+    TaskService.prototype.editSubTask = function (id, formData) {
+        var _this = this;
+        return this._http.patch(this.apiUrl + "subtasks/" + id + "/", formData)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function () {
+            _this.refreshNeeded$.next();
+        }));
+    };
+    TaskService.prototype.deleteSubTask = function (id) {
+        return this._http.delete(this.apiUrl + "subtasks/" + id);
+    };
+    TaskService.prototype.fetchSpecificsubTasks = function (task) {
+        return this._http.get(this.apiUrl + "subtasks/?task__id=" + task);
+    };
+    TaskService.ctorParameters = function () { return [
+        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+    ]; };
+    TaskService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root',
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], TaskService);
+    return TaskService;
 }());
 
 
